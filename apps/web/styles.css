@@ -1,0 +1,21 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 2rem;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+label {
+  display: flex;
+  flex-direction: column;
+}
+input, textarea {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}
