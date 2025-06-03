@@ -1,4 +1,5 @@
 import { MongoClient } from 'mongodb';
+import { buildEventPrompt } from '../../libs/event-helpers';
 
 const port = Number(process.env.PORT) || 3001;
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
@@ -16,8 +17,10 @@ Bun.serve({
     const url = new URL(req.url);
     if (req.method === 'POST' && url.pathname === '/events') {
       const event = await req.json();
-      await collection.insertOne(event);
-      return new Response(JSON.stringify({ status: 'ok' }), {
+      const prompt = await buildEventPrompt(event);
+      const doc = { ...event, prompt };
+      await collection.insertOne(doc);
+      return new Response(JSON.stringify({ status: 'ok', prompt }), {
         headers: { 'Content-Type': 'application/json' },
       });
     }
