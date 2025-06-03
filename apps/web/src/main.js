@@ -7,15 +7,30 @@ function EventForm() {
     location: '',
     description: ''
   });
+  const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    try {
+      const res = await fetch('/events', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (res.ok && data.status === 'ok') {
+        setMessage('Event created successfully');
+      } else {
+        setMessage(data.error || 'Error creating event');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage('Error creating event');
+    }
   };
 
   return React.createElement(
@@ -66,7 +81,8 @@ function EventForm() {
       'button',
       { type: 'submit' },
       'Submit'
-    )
+    ),
+    message && React.createElement('p', null, message)
   );
 }
 
