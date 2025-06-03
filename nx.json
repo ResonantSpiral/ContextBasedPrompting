@@ -10,5 +10,10 @@
         "cacheableOperations": []
       }
     }
+  },
+  "projects": {
+    "api": "apps/api",
+    "web": "apps/web",
+    "event-helpers": "libs/event-helpers"
   }
 }
