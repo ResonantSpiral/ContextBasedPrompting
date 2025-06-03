@@ -16,6 +16,20 @@
         "command": "bun run index.ts",
         "cwd": "libs/event-helpers"
       }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint . --ext .ts",
+        "cwd": "libs/event-helpers"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bunx vitest",
+        "cwd": "libs/event-helpers"
+      }
     }
   }
 }

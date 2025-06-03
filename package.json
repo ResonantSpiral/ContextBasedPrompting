@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "nx": "latest"
+    "nx": "latest",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.1.0",
+    "vitest": "^1.0.0"
   }
 }
