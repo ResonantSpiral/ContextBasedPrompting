@@ -1,0 +1,8 @@
+{
+  "name": "nx-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "nx": "latest"
+  }
+}
